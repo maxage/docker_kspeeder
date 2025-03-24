@@ -1,0 +1,29 @@
+# Dockerfile for KSpeeder based alpine
+# Copyright (C) 2020 - 2020 Xiaobao <xiaobao@linkease.com>
+# Reference URL:
+# https://www.kspeeder.com/
+
+FROM --platform=${TARGETPLATFORM} alpine:latest
+LABEL maintainer="Xiaobao <xiaobao@linkease.com>"
+
+ARG TARGETPLATFORM
+ADD dest /dest
+RUN set -ex \
+  cd /dest && /dest/kspeeder-install.sh "${TARGETPLATFORM}" && cd / && rm -rf /dest
+
+EXPOSE 5443
+EXPOSE 5003
+
+VOLUME /kspeeder-data
+
+VOLUME /kspeeder-config
+
+ENV TZ=Asia/Shanghai
+
+ENV KSPEEDER_PORT=5443
+ENV KSPEEDER_AMDINPORT=5003
+ENV KSPEEDER_CONFIG=/kspeeder-config
+ENV KSPEEDER_DATA=/kspeeder-data
+
+CMD [ "/usr/bin/kspeeder"]
+
