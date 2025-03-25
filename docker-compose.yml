@@ -1,0 +1,14 @@
+
+services:
+  kspeeder:
+    build:
+      context: .
+      dockerfile: Dockerfile.architecture
+    container_name: kspeeder
+    ports:
+      - "5443:5443"
+      - "5003:5003"
+    volumes:
+      - ./kspeeder-data:/kspeeder-data
+      - ./kspeeder-config:/kspeeder-config
+    restart: unless-stopped
