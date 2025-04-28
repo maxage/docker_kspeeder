@@ -68,6 +68,16 @@ docker-compose up -d
   - /kspeeder-data：数据存储目录
   - /kspeeder-config：配置文件目录
 
+## 使用说明
+- 配置docker镜像服务地址
+  - 镜像地址：https://registry.linkease.net:5443
+- 重启docker服务
+- 验证
+```bash
+
+docker info | grep "registry.linkease.net"
+
+```
 ## 镜像地址
 官方 Docker Hub 镜像：[linkease/kspeeder](https://hub.docker.com/r/linkease/kspeeder/)
 
