@@ -36,7 +36,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: linkease/kspeeder
+          images: jasonvip888/kspeeder
           tags: |
             type=ref,event=branch
             type=semver,pattern={{version}},event=tag
